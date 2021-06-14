@@ -8,6 +8,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+
+import java.io.*;
 import java.util.ArrayList;
 
 public class Controller {
@@ -22,11 +24,16 @@ public class Controller {
     public Label lblDisplayFood;
     public Button btnDeleteFriend;
     public ListView listFriends;
-    private ArrayList<Friend> friends = new ArrayList<>();
+    public Button btnLoad;
+    public Button btnSave;
+    public TextField textFileName;
+    public static ArrayList<Friend> friends = new ArrayList<>();
     private static String name;
     private static int age;
-    private static javafx.scene.paint.Color colour;
+    private static String colour;
     private static String food;
+    public static String fileName;
+
 
     //Modifies: Friends, button, friend list
     //Effects: Adds a friend to the list then resets the friend creation screen
@@ -37,6 +44,7 @@ public class Controller {
         textFood.clear();
         textYear.clear();
         btnAddFriend.setDisable(true);
+        if (fileName != null) btnSave.setDisable(false);
         listFriends.refresh();
     }
 
@@ -61,7 +69,8 @@ public class Controller {
             btnAddFriend.setDisable(false);
             name = textName.getText();
             age = Integer.parseInt(textYear.getText());
-            colour = colourPicker.getValue();
+            Color selectedColour = colourPicker.getValue();
+            colour = String.format("#%02x%02x%02x", (int)(selectedColour.getRed()*255), (int)(selectedColour.getGreen()*255), (int) (selectedColour.getBlue()*255));
             food = textFood.getText();
         }
         else {
@@ -74,10 +83,38 @@ public class Controller {
         Friend selected = (Friend) listFriends.getSelectionModel().getSelectedItem();
         lblDisplayName.setText(selected.getName());
         lblDisplayAge.setText(String.valueOf(selected.getAge()));
-        Color selectedColour = selected.getFavColour();
-        String hexCode = String.format("#%02x%02x%02x", (int)(selectedColour.getRed()*255), (int)(selectedColour.getGreen()*255), (int) (selectedColour.getBlue()*255));
-        paneFavColour.setStyle("-fx-background-color: " + hexCode);
+        paneFavColour.setStyle("-fx-background-color: " + selected.getFavColour());
         lblDisplayFood.setText(selected.getFavFood());
         btnDeleteFriend.setDisable(false);
     }
+
+    //Modifies: friends list
+    //Effects: Adds friends from a text file to the program
+    public void loadFriends(ActionEvent actionEvent) throws IOException {
+        friends.addAll(SaveLoad.loadFriends(fileName));
+        listFriends.getItems().setAll(friends);
+        listFriends.refresh();
+    }
+
+    //Requires: some existing friends
+    //Modifies: selected text file
+    //Effects: saves all friends to the selected file
+    public void saveFriends(ActionEvent actionEvent) throws IOException {
+        for (Friend i : friends) {
+            SaveLoad.saveFriend(i);
+        }
+    }
+
+    //Requires: Valid file name not including file type
+    //Modifies: selected file, save and load buttons
+    //Effects: selects a file to be saved to or loaded from
+    public void selectFile() {
+        if (textFileName.getText() != null && (!textFileName.getText().contains(" "))) {
+            fileName = textFileName.getText();
+            btnLoad.setDisable(false);
+            if (listFriends.getItems() != null) btnSave.setDisable(false);
+        }
+    }
+
+
 }
