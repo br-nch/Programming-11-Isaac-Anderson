@@ -73,10 +73,12 @@ public class SaveLoad {
         BufferedWriter bw = new BufferedWriter(fw);
         FileReader fr = new FileReader(Controller.fileName + ".txt");
         BufferedReader br = new BufferedReader(fr);
-        String currentLine;
+        String currentLine = "";
         boolean isSaved = false;
-        while ((currentLine = br.readLine()) != null) {
-            if (currentLine.contains(friend.getName())) isSaved = true;
+        if (br.readLine() != null) {
+            while ((currentLine = br.readLine()) != null) {
+                if (currentLine.contains(friend.getName())) isSaved = true;
+            }
         }
         if (!isSaved) {
             if (currentLine.equals(";")) bw.write("\r");
