@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SpellBook:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SpellBook_jar</output-path>
+    <root id="archive" name="SpellBook.jar">
+      <element id="module-output" name="SpellBook" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-fxml-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-fxml-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-controls-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-controls-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-graphics-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-graphics-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-base-16.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/javafx-base-16-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/junit-4.13.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/hamcrest-2.2.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+  <tabs>
+    <Tab text="Characters">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listChars" layoutX="14.0" layoutY="14.0" onMouseClicked="#selectChar" prefHeight="211.0" prefWidth="200.0" />
+                  <VBox layoutX="14.0" layoutY="232.0" prefHeight="66.0" prefWidth="200.0">
+                     <children>
+                        <HBox prefHeight="32.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="Name:" />
+                              <TextField fx:id="textCharName" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="21.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="btnSubmitChar" mnemonicParsing="false" onAction="#submitChar" text="Submit" />
+                              <Button fx:id="btnAddChar" disable="true" mnemonicParsing="false" onAction="#addChar" text="Add Character" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <VBox layoutX="250.0" layoutY="14.0" prefHeight="335.0" prefWidth="334.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="86.0" prefWidth="334.0">
+                           <children>
+                              <Label fx:id="lblCharName" prefHeight="70.0" prefWidth="178.0" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Centaur" size="48.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <VBox prefHeight="89.0" prefWidth="334.0" spacing="20.0">
+                           <children>
+                              <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="334.0" spacing="20.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="25.0" prefWidth="149.0" spacing="10.0">
+                                       <children>
+                                          <Label text="Level:" />
+                                          <Label fx:id="lblCharLvl" />
+                                       </children>
+                                    </HBox>
+                                    <Button fx:id="btnLvlUp" disable="true" mnemonicParsing="false" onAction="#lvlUp" text="Level Up" />
+                                 </children>
+                              </HBox>
+                              <HBox spacing="10.0">
+                                 <children>
+                                    <Label text="Favourite Spell School(s):" />
+                                    <Label fx:id="lblFavSchool" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <HBox alignment="CENTER" spacing="20.0">
+                           <children>
+                              <Button fx:id="btnDeleteChar" disable="true" mnemonicParsing="false" onAction="#deleteChar" text="Delete" />
+                              <Button fx:id="btnSaveChar" disable="true" mnemonicParsing="false" onAction="#saveChar" text="Save" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Button fx:id="btnLoadChar" layoutX="14.0" layoutY="331.0" mnemonicParsing="false" onAction="#loadChar" text="Load" />
+                  <TextField fx:id="textCharFileName" layoutX="63.0" layoutY="331.0" prefHeight="25.0" prefWidth="101.0" promptText="Character Name" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Spellbook">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <ListView fx:id="listSpells" layoutX="14.0" layoutY="51.0" onMouseClicked="#selectSpell" prefHeight="294.0" prefWidth="200.0" />
+                  <VBox alignment="TOP_CENTER" layoutX="250.0" layoutY="14.0" prefHeight="343.0" prefWidth="325.0" spacing="5.0">
+                     <children>
+                        <Label fx:id="lblSpellName">
+                           <font>
+                              <Font name="Centaur" size="21.0" />
+                           </font></Label>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="Level:" />
+                              <Label fx:id="lblSpellLevel" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="School:" />
+                              <Label fx:id="lblSchool" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="Casting Time:" />
+                              <Label fx:id="lblCastTime" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="Components:" />
+                              <Label fx:id="lblComponents" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="9.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="Range:" />
+                              <Label fx:id="lblRange" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="325.0" spacing="15.0">
+                           <children>
+                              <Label text="Duration:" />
+                              <Label fx:id="lblDuration" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="15.0">
+                           <children>
+                              <Label text="Description:" />
+                              <TextArea fx:id="flowDescription" editable="false" prefHeight="200.0" prefWidth="200.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="63.0" prefWidth="325.0">
+                           <children>
+                              <Button fx:id="btnDeleteSpell" disable="true" mnemonicParsing="false" onAction="#deleteSpell" text="Delete Spell" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+                  <Label fx:id="lblOwner" alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="33.0" prefWidth="199.0">
+                     <font>
+                        <Font name="Centaur" size="21.0" />
+                     </font></Label>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Add Spells">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <VBox layoutX="137.0" layoutY="6.0" prefHeight="358.0" prefWidth="326.0" spacing="5.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="23.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Name:" />
+                              <TextField fx:id="textSpellName" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="6.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Level:" />
+                              <ChoiceBox fx:id="cboxLvl" prefWidth="150.0">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="0" />
+                                       <String fx:value="1" />
+                                       <String fx:value="2" />
+                                       <String fx:value="3" />
+                                       <String fx:value="4" />
+                                       <String fx:value="5" />
+                                       <String fx:value="6" />
+                                       <String fx:value="7" />
+                                       <String fx:value="8" />
+                                       <String fx:value="9" />
+                                    </FXCollections>
+                                 </items>
+                              </ChoiceBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="13.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="School" />
+                              <ChoiceBox fx:id="cboxSchool" prefWidth="150.0">
+                                 <items>
+                                    <FXCollections fx:factory="observableArrayList">
+                                       <String fx:value="Abjuration" />
+                                       <String fx:value="Conjuration" />
+                                       <String fx:value="Divination" />
+                                       <String fx:value="Enchantment" />
+                                       <String fx:value="Evocation" />
+                                       <String fx:value="Illusion" />
+                                       <String fx:value="Necromancy" />
+                                       <String fx:value="Transmutation" />
+                                    </FXCollections>
+                                 </items>
+                              </ChoiceBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Casting Time:" />
+                              <TextField fx:id="textTime" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Components:" />
+                              <CheckBox fx:id="checkVerbal" mnemonicParsing="false" text="Verbal" />
+                              <CheckBox fx:id="checkSomatic" mnemonicParsing="false" text="Somatic" />
+                              <CheckBox fx:id="checkMaterial" mnemonicParsing="false" text="Material" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Range:" />
+                              <TextField fx:id="textRange" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Label text="Duration:" />
+                              <TextField fx:id="textDuration" />
+                              <CheckBox fx:id="checkConcentration" mnemonicParsing="false" text="Concentration" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="10.0">
+                           <children>
+                              <Label text="Description:" />
+                              <TextArea fx:id="textDescription" prefHeight="100.0" prefWidth="217.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="25.0" prefWidth="300.0" spacing="10.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#submitSpell" text="Submit" />
+                              <Button fx:id="btnAddSpell" disable="true" mnemonicParsing="false" onAction="#addSpell" text="Add Spell" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>
